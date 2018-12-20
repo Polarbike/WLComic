@@ -1,0 +1,1 @@
+../../../JQImagePicker/JQImagePicker/JQImageCropperViewController.h

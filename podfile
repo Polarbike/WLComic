@@ -1,0 +1,32 @@
+# Uncomment the next line to define a global platform for your project
+  platform :ios, '9.0'
+
+target 'QuickAnimation' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for QuickAnimation
+  #以下是添加的framework
+
+   pod 'SDCycleScrollView', '~> 1.75'
+   pod 'SDWebImage', '~> 4.4.3'
+   pod 'Masonry', '~> 1.1.0'
+   pod 'MJRefresh', '~> 3.1.15.7'
+   pod 'AFNetworking', '~> 3.2.1'
+   pod 'JQImagePicker', '~> 0.0.4'
+   pod 'MBProgressHUD', '~> 1.1.0'
+   pod 'YYWebImage', '~> 1.0.5'
+   pod 'YYImage/WebP'
+   pod 'JQImagePicker', '~> 0.0.4'
+   pod 'PPNetworkHelper', '~> 0.8.1'
+  target 'QuickAnimationTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'QuickAnimationUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RightTableCell" rowHeight="366" id="KGk-i7-Jjw" customClass="HotTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="656" height="366"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="656" height="365.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者：岸本齐名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sc9-9r-iSt">
+                        <rect key="frame" x="8" y="36" width="620" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="zaA-5E-k3W"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.54117647058823526" green="0.54117647058823526" blue="0.54117647058823526" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nurto.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="w2P-2b-LDU">
+                        <rect key="frame" x="0.0" y="62" width="656" height="257"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="完结篇：鸣人成神" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVg-Tl-did">
+                        <rect key="frame" x="8" y="334.5" width="555" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="AtW-BT-egc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.41176470588235292" green="0.41176470588235292" blue="0.41176470588235292" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="700" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEM-AR-ZHy">
+                        <rect key="frame" x="598" y="299" width="50" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="3AG-66-EN5"/>
+                            <constraint firstAttribute="width" priority="400" constant="50" id="Kzq-n7-dLk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgD-qY-NSj">
+                        <rect key="frame" x="575" y="299.5" width="19" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="19" id="ieA-ae-LnB"/>
+                            <constraint firstAttribute="height" constant="19" id="o7m-J9-Tcj"/>
+                        </constraints>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="火影忍者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdY-tb-eqU">
+                        <rect key="frame" x="8" y="8" width="636" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="UFm-fI-17G"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Sc9-9r-iSt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="0NW-oo-V53"/>
+                    <constraint firstAttribute="trailing" secondItem="w2P-2b-LDU" secondAttribute="trailing" id="6of-Mf-G6n"/>
+                    <constraint firstItem="wgD-qY-NSj" firstAttribute="leading" secondItem="yVg-Tl-did" secondAttribute="trailing" constant="12" id="AUH-0q-iqd"/>
+                    <constraint firstItem="w2P-2b-LDU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="FGb-Xs-qNf"/>
+                    <constraint firstItem="w2P-2b-LDU" firstAttribute="top" secondItem="Sc9-9r-iSt" secondAttribute="bottom" constant="8" id="K30-64-9pM"/>
+                    <constraint firstItem="qdY-tb-eqU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="KGt-rm-RGX"/>
+                    <constraint firstAttribute="bottom" secondItem="w2P-2b-LDU" secondAttribute="bottom" constant="46.5" id="Lfv-Et-sdY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Sc9-9r-iSt" secondAttribute="trailing" constant="8" id="NV5-a0-mHr"/>
+                    <constraint firstItem="Sc9-9r-iSt" firstAttribute="top" secondItem="qdY-tb-eqU" secondAttribute="bottom" constant="8" id="Xx1-N9-k9d"/>
+                    <constraint firstAttribute="trailing" secondItem="qdY-tb-eqU" secondAttribute="trailing" constant="12" id="YXG-kd-RGn"/>
+                    <constraint firstItem="yVg-Tl-did" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="aZa-7u-6Tf"/>
+                    <constraint firstAttribute="bottom" secondItem="yVg-Tl-did" secondAttribute="bottom" constant="10" id="jIT-gz-Lag"/>
+                    <constraint firstItem="qdY-tb-eqU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="lzJ-wV-WvQ"/>
+                    <constraint firstAttribute="trailing" secondItem="uEM-AR-ZHy" secondAttribute="trailing" constant="8" id="sUv-ew-Ljs"/>
+                    <constraint firstItem="uEM-AR-ZHy" firstAttribute="leading" secondItem="wgD-qY-NSj" secondAttribute="trailing" constant="4" id="t9o-QP-Jw0"/>
+                    <constraint firstItem="wgD-qY-NSj" firstAttribute="centerY" secondItem="uEM-AR-ZHy" secondAttribute="centerY" id="tRT-xH-UQX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="author" destination="Sc9-9r-iSt" id="Q2M-Kg-e80"/>
+                <outlet property="cellImage" destination="w2P-2b-LDU" id="p86-MG-d9r"/>
+                <outlet property="name" destination="qdY-tb-eqU" id="hFz-am-Hc6"/>
+                <outlet property="pageContent" destination="yVg-Tl-did" id="mAd-Mu-ebr"/>
+                <outlet property="praiseBut" destination="wgD-qY-NSj" id="8tz-zy-OXp"/>
+                <outlet property="praiseNum" destination="uEM-AR-ZHy" id="Yl3-SK-3Fi"/>
+            </connections>
+            <point key="canvasLocation" x="-32" y="152.02398800599701"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="nurto.jpg" width="1728" height="1080"/>
+    </resources>
+</document>

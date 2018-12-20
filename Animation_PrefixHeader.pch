@@ -1,0 +1,53 @@
+//
+//  PrefixHeader.pch
+//  QuickAnimation
+//
+//  Created by Weilian on 28/11/18.
+//  Copyright © 2018年 Weilian. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#define kSCREEN_Width [UIScreen mainScreen].bounds.size.width
+#define kSCREEN_Height [UIScreen mainScreen].bounds.size.height
+#define kRGB(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+
+
+
+#define IsNilOrNull(_ref)  (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]) || ([(_ref) isEqual:@"null"]) || ([(_ref) isEqual:@"(null)"])|| ([(_ref) isEqual:@"<null>"]))
+//宏定义
+#define WeakSelf(type) __weak __typeof__(type) weakSelf = type;
+#define StrongSelf(type) __strong __typeof__(type) strongSelf = type;
+//本地数据key
+#define kUser @"user"
+#define kPassWord @"passWord"
+#define kCollectionArray @"collectionArray"
+#define kHistoryArray    @"historyArray"
+#define kUserArray       @"userArray"
+#define kPassWordArray   @"passWordArray"
+#define kUserInfo        @"userInfo"
+#define kUserImage       @"userImage"
+#define kNickName        @"nickName"
+
+#define Font_Name_PFSC @"PingFangSC-Medium"
+#define Font_Name_PFSCRe @"PingFangSC-Regular"
+#define Font_Name_Semibold @"PingFangSC-Semibold"
+#define Font_Name_SCLight @"PingFangSC-Light"
+#define Font_Name_Light @"PingFangSC-Light"
+#define Font_Name_Thin @"PingFangSC-Thin"
+
+#define kAPI_Key                   @"fabe6953ce6a1b8738bd2cabebf893a472d2b6274ef7ef6f6a5dc7171e5cafb14933ae65c70bceb97e0e9d47af6324d50394ba70c1bb462e0ed18b88b26095a82be87bc9eddf8e548a2a3859274b25bd0ecfce13e81f8317cfafa822d8ee486fe2c43e7acd93e9f19fdae5c628266dc4762060f6026c5ca83e865844fc6beea59822ed4a70f5288c25edb1367700ebf5c78a27f5cce53036f1dac4a776588cd890cd54f9e5a7adcaeec340c7a69cd986:::open"
+
+
+#import "Masonry.h"
+#import "MJRefresh.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <YYWebImage/YYWebImage.h>
+
+
+#endif /* PrefixHeader_pch */
