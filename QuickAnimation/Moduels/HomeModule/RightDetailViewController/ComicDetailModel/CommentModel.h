@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *content_filter;//过滤过的内容
 @property(nonatomic,copy) NSString *face;//头像地址
 
+@property(nonatomic,strong) NSMutableArray *replyComment;//回复评论数组
 
 @end
 

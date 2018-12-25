@@ -31,6 +31,12 @@
 //导入漫画详情页
 #import "ComicDetailViewController.h"
 #import "MHNetworking.h"
+//导入评论头部视图
+#import "CommentSectionHeaderView.h"
+
+#import "CommentInputView.h"
+
+#import "BGFMDB.h"
 
 
 
@@ -39,7 +45,7 @@ static NSString *chapter_identifier = @"ChapterCollectionViewCell";//
 static NSString *const comment_identifier = @"CommentTableViewCell";
 
 
-@interface RightDetailViewController ()<UITableViewDelegate,UITableViewDataSource,DetailTittleClickDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
+@interface RightDetailViewController ()<UITableViewDelegate,UITableViewDataSource,DetailTittleClickDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate,UITextFieldDelegate>
 
 @property(nonatomic,strong) RightDetailHeader *detailHeaderView;//
 @property(nonatomic,strong) RightDetailVIew *detailView;
@@ -47,18 +53,23 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
 //@property(nonatomic,strong) AFHTTPRequestOperation *comicDetailOperation;//漫画详情
 //@property(nonatomic,strong) AFHTTPRequestOperation *commentDataOperation;//评论请求操作
 //@property(nonatomic,strong) AFHTTPRequestOperation *comicRealTimeDataOperation;//评论请求操作
-
-
 //
 @property(nonatomic,strong) ComicDetailModel *comicDetailModel;
 @property(nonatomic,strong) NSMutableArray *chapterArray;//章回model数组
 @property(nonatomic,strong) NSMutableArray *commentArray;//评论model数组
 @property(nonatomic,strong) NSMutableArray *commentHightArray;//comment内容高度数组
 
+@property(nonatomic,strong) NSMutableArray *commentDicArray;//将评论数组变成字典存放
+
 @property(nonatomic,assign) BOOL isHorizontal;
 @property(nonatomic,strong) UIButton *collectionButton;
 @property(nonatomic,assign) BOOL isRightSelected;//收藏按钮是否点击
 @property(nonatomic,strong) NSMutableArray *nameArray;//判断漫画名字看是否已收藏
+//
+@property(nonatomic,strong) CommentInputView *inputView;//输入视图
+@property(nonatomic,assign) BOOL isDisplay;//input view是否显示
+@property(nonatomic,assign) NSInteger replyIndex;//点击回复的下标
+
 @end
 
 @implementation RightDetailViewController
@@ -74,6 +85,9 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
     self.extendedLayoutIncludesOpaqueBars = NO;
     //不添加这个方法会从最上面计算布局，不会从导航栏下计算布局
     self.navigationController.navigationBar.translucent = NO;
+    //增加键盘通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardBeginShowUpAction:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHiddenAction:) name:UIKeyboardWillHideNotification object:nil];
     
 }
 //#pragma mark -- 确保导航栏不被隐藏
@@ -138,17 +152,18 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
             }
         }
         
-        
     } failure:^(id  _Nonnull error) {
         //
         [self showMBProgressHUDWithMessage:@"网络连接错误" showLabel:YES isShowTime:YES];
     }];
     [self showMBProgressHUDWithMessage:@"加载中" showLabel:YES isShowTime:NO];
-//    self.comicRealTimeDataOperation = [NCNetwork getComicRealTimeDataWithDelegate:self parameters:self.parameter];
+//  self.comicRealTimeDataOperation = [NCNetwork getComicRealTimeDataWithDelegate:self parameters:self.parameter];
 }
 #pragma mark -- 评论数组网络请求
 - (void)fetchCommentData {
     
+    //在发起网络请求之前清空数组
+    [NSArray bg_clearArrayWithName:kCommentLocalArray];
 //    parmeters["object_id"] = object_id
 //    parmeters["thread_id"] = thread_id
 //    parmeters["page"] = page
@@ -156,7 +171,7 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
     NSString *object_id = self.comicDetailModel.comic_id;
     NSString *thread_id = self.comicDetailModel.thread_id;
     NSString *page = @"-1";
-
+    
     [self.parameter setObject:object_id forKey:@"object_id"];
     [self.parameter setObject:thread_id forKey:@"thread_id"];
     [self.parameter setObject:page forKey:@"page"];
@@ -180,15 +195,19 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
                     
                     NSString *content = commentModel.content_filter;
                     content = [content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]; //去除掉首尾的空白字符和换行字符
-                    content = [content stringByReplacingOccurrencesOfString:@"\r" withString:@"k"];
-                    content = [content stringByReplacingOccurrencesOfString:@"\n" withString:@"k"];
-                    content = [content stringByReplacingOccurrencesOfString:@"" withString:@"k"];
+                    content = [content stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+                    content = [content stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                    content = [content stringByReplacingOccurrencesOfString:@"" withString:@""];
                     CGFloat height = [self getCommentHeightWithString:content];
                     CGSize size = [content textSizeWithFont:[UIFont fontWithName:Font_Name_PFSCRe size:12] constrainedToSize:CGSizeMake(kSCREEN_Width-20, MAXFLOAT)];
                     height = ceilf(size.height)+1;
                     NSNumber *number = [NSNumber numberWithFloat:height];
                     [self.commentHightArray addObject:number];//根据计算高度
                 }
+//                self.commentDicArray = self.commentArray;
+                //留一个数组备份
+                [self.commentArray bg_saveArrayWithName:kCommentLocalArray];
+                
                 [self.detailView.commentTableView reloadData];
             }
     }
@@ -206,7 +225,6 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
 //    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"岸本齐明",@"author",@"火影忍者",@"name", nil];
 //    [self.detailHeaderView setContentWithDictionary:dic];
     [self.view addSubview:self.detailHeaderView];
-    
     //更改详情页左侧返回按钮样子
     UIImage *backImage = [UIImage imageNamed:@"ic_nav_second_back_normal_17x17_"];
     backImage = [backImage imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
@@ -235,6 +253,13 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
     //self.detail的代理方法delegate
     self.detailView.delegate = self;
     [self.view addSubview:self.detailView];
+    //评论输入框
+    self.inputView = [[CommentInputView alloc] init];
+    [self.inputView.submitButton addTarget:self action:@selector(submitButtonClickAction) forControlEvents:(UIControlEventTouchUpInside)];
+    self.inputView.frame = CGRectMake(0, kSCREEN_Height+64, kSCREEN_Width, 44);
+    [self.view addSubview:self.inputView];
+    //textfield代理
+    self.inputView.inputTextField.delegate = self;
     //collectionView注册单元格
     UINib *chapter_nib = [UINib nibWithNibName:@"ChapterCollectionViewCell" bundle:nil];
     [self.detailView.collectionView registerNib:chapter_nib forCellWithReuseIdentifier:chapter_identifier];
@@ -247,12 +272,138 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
     //在创建完所有子视图后添加
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
-
+#pragma mark -- 评论提交发送按钮点击方法
+- (void)submitButtonClickAction {
+    //获取到评论内容
+    NSString *submitContent = self.inputView.inputTextField.text;
+    NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:kUser];
+    if (IsNilOrNull(user)||[user isEqualToString:@""]) {
+        //[self showAlertHUDWithMessage:@"评论内容不能为空" showView:self.view];
+        MBProgressHUD *mb_hud = [MBProgressHUD showHUDAddedTo:self.view animated:NO];
+        mb_hud.label.text = @"请先登录";
+        mb_hud.label.font = [UIFont fontWithName:Font_Name_PFSCRe size:13];
+        mb_hud.label.textColor = kRGB(40, 40, 40, 1);
+        mb_hud.mode =MBProgressHUDModeText;
+        [mb_hud hideAnimated:YES afterDelay:1.0];
+        //提示请登录后如果是第一响应者，注销
+        if([self.inputView.inputTextField isFirstResponder]){
+            
+            [self.inputView.inputTextField resignFirstResponder];
+        }
+    }else if([submitContent isEqualToString:@""]) {
+        
+        MBProgressHUD *mb_hud = [MBProgressHUD showHUDAddedTo:self.view animated:NO];
+        mb_hud.label.text = @"评论内容不能为空";
+        mb_hud.label.font = [UIFont fontWithName:Font_Name_PFSCRe size:13];
+        mb_hud.label.textColor = kRGB(40, 40, 40, 1);
+        mb_hud.mode =MBProgressHUDModeText;
+        [mb_hud hideAnimated:YES afterDelay:1.0];
+    }else {
+        
+        //在这里取出评论，添加评论信息，再更新本地存储
+        //根据这些字典内容添加
+        //  [dic setValue:@"" forKey:@""];
+        //  [dic bg_saveDictionary];
+        //  NSDictionary *getDic =
+        //  打印出评论内容
+        //  [self.commentArray bg_saveArrayWithName:@""];
+        if (self.inputView.inputStatus == InputViewReplyStatus) {
+            
+            //评论功能做起来好麻烦
+            //如果输入状态是回复状态,则需要更新一个数组元素,
+            CommentModel *model = [[CommentModel alloc] init];
+            if (self.commentDicArray.count > 0) {
+                
+                model = self.commentDicArray[self.replyIndex];
+                
+            }else {
+                
+                model = self.commentArray[self.replyIndex];
+            }
+            NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:@"jkljkljkljkljlkjkl", nil];
+            model.replyComment = array;
+            
+            
+        }else {
+            
+            //如果是评论状态，则添加一个数组元素
+            NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:kUser];
+            CommentModel *model = [[CommentModel alloc] init];
+            [model setValue:user forKey:@"nickname"];
+            [model setValue:submitContent forKey:@"content_filter"];
+            //取出本地数组，插入下标为0 的位置
+            NSArray *localArray = [NSArray bg_arrayWithName:kCommentLocalArray];
+            NSMutableArray *localMutArray = [NSMutableArray arrayWithArray:localArray];
+            [localMutArray insertObject:model atIndex:0];
+            //本地数组先清空
+            [NSArray bg_clearArrayWithName:kCommentLocalArray];
+            //再存入
+            [localMutArray bg_saveArrayWithName:kCommentLocalArray];
+            
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [hud hideAnimated:YES afterDelay:1.0];
+            [self.inputView.inputTextField resignFirstResponder];
+            //添加本地数据后刷新
+            [self reloadCommentTableViewData];
+        }
+        
+    }
+    NSLog(@"%@",submitContent);
+}
+#pragma mark -- 监视键盘将要展示的时候
+- (void)keyboardBeginShowUpAction:(NSNotification *)notification {
+    
+    //键盘将要展示出来的时候通知相应的方法
+    NSDictionary *dic = notification.userInfo;
+    NSValue *value = [dic valueForKey:UIKeyboardFrameEndUserInfoKey];
+    CGFloat keyboard_h = [value CGRectValue].size.height;
+    if (keyboard_h <= 0) {
+            
+        return;
+    }
+    //根据键盘高度来重新布局
+    self.inputView.frame = CGRectMake(0, self.view.frame.size.height-keyboard_h-44, kSCREEN_Width, 44);
+}
+#pragma mark -- 监听键盘将要隐藏的时候
+- (void)keyboardWillHiddenAction:(NSNotification *)notification {
+    //如果是点击回复按钮 然后取消就要将isSelectedButton 属性设置为no
+    //根据键盘高度来重新布局
+    self.inputView.frame = CGRectMake(0, self.view.frame.size.height+10, kSCREEN_Width, 44);
+    self.inputView.inputTextField.text = @"";
+    self.isDisplay = false;
+    //将数组改回评论状态，在点击回复按钮的时候再修改状态
+    self.inputView.inputStatus = InputViewCommentStatus;
+}
+#pragma mark -- textfiled return收回键盘
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    if ([self.inputView.inputTextField isFirstResponder]) {
+        
+        [self.inputView.inputTextField resignFirstResponder];
+        self.inputView.inputTextField.text = @"";
+    }
+    return YES;
+}
 #pragma mark -- tableview 的代理方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 1;
-    
+    if ([tableView isEqual:self.detailView.detailTableView]) {
+        
+        return 1;
+    }else{
+        
+//      NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:kUser];
+//        NSArray *resultArray = [NSArray bg_arrayWithName:kCommentLocalArray];
+//        self.commentDicArray = [NSMutableArray arrayWithArray:resultArray];
+//        return self.commentDicArray.count;
+        if (self.commentDicArray.count > 0) {
+
+            return self.commentDicArray.count;
+        }else{
+
+            return self.commentArray.count;;
+        }
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -262,7 +413,15 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
         return 1;
     }else{
         
-        return self.commentArray.count;
+        if (self.commentDicArray.count > 0) {
+            
+            CommentModel *model = self.commentDicArray[section];
+            NSMutableArray *array = model.replyComment;
+            return array.count;
+        }else{
+            
+            return 0;;
+        }
     }
 }
 
@@ -273,11 +432,59 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
         return 280;
     }else{
         //解决cell高度问题
-        NSNumber *height = self.commentHightArray[indexPath.row];
-        CGFloat float_cell = [height floatValue]+70;
-        return float_cell;
+//        NSNumber *height = self.commentHightArray[indexPath.row];
+//        CGFloat float_cell = [height floatValue]+70;
+//        return float_cell;
+        return 44;
     }
 }
+//初始评论为一个section，回复的评论为cell ， 这样算.
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+   //根据内容算高度
+    if ([tableView isEqual:self.detailView.commentTableView]) {
+        
+        if (self.commentHightArray.count > 0) {
+            
+            NSNumber *height = self.commentHightArray[section];
+            CGFloat float_cell = [height floatValue]+kCommentUI_height;
+            return float_cell;
+        }else{
+            
+            return 0.01;
+        }
+    }else{
+        
+        return 0.001;
+    }
+}
+//返回的是section的headerview，这里的header view就是评论的内容了
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    if ([tableView isEqual:self.detailView.detailTableView]) {
+        
+        return [UIView new];
+    }else{
+        
+        NSNumber *height = self.commentHightArray.count>0?self.commentHightArray[section]:0;
+        CGFloat float_cell = [height floatValue]+kCommentUI_height;
+        CommentSectionHeaderView *sectionHeader = [[CommentSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_Width, float_cell+5)];
+        sectionHeader.replyButton.tag = 1000 + section;
+        [sectionHeader.replyButton addTarget:self action:@selector(replayButtonClickAction:) forControlEvents:(UIControlEventTouchUpInside)];
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionHeaderTapGesture:)];
+        sectionHeader.tag = 200 + section;
+        [sectionHeader addGestureRecognizer:tapGesture];
+        //
+        [sectionHeader.reportButton addTarget:self action:@selector(reportButtonClickAction:) forControlEvents:(UIControlEventTouchUpInside)];
+        sectionHeader.reportButton.tag = 2000 + section;
+        CommentModel *model = [[CommentModel alloc] init];
+        model = self.commentDicArray.count>0?self.commentDicArray[section]:self.commentArray[section];
+        sectionHeader.commentModel = model;
+        return sectionHeader;
+        
+    }
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -288,24 +495,113 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
         cell.content.text = self.comicDetailModel.all_description;
         return cell;
     }else if([tableView isEqual:self.detailView.commentTableView]) {
-        
 //        CommentListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:comment_identifier];
 //
 //        if (!cell) {
-//
 //            cell = [[CommentListTableViewCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:comment_identifier];
 //        }
         CommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:comment_identifier];
         CommentModel *model = [[CommentModel alloc] init];
-        model = self.commentArray[indexPath.row];
+        model = self.commentDicArray.count > 0?self.commentDicArray[indexPath.row]:self.commentArray[indexPath.row];
         cell.commentModel = model;
-        
         return cell;
     }else{
         
         UITableViewCell *cell = [[UITableViewCell alloc] init];
         return cell;
     }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+//    [self.inputView.inputTextField becomeFirstResponder];
+    
+}
+#pragma mark -- 本地重新加载数据
+- (void)reloadCommentTableViewData {
+    
+    if (self.commentHightArray.count > 0) {
+        
+        [self.commentHightArray removeAllObjects];
+    }
+    NSArray *array = [NSArray bg_arrayWithName:kCommentLocalArray];
+    self.commentDicArray = [NSMutableArray arrayWithArray:array];
+    if (self.commentDicArray.count > 0) {
+        
+        for (CommentModel *model in self.commentDicArray) {
+//            CommentModel *model = [[CommentModel alloc] init];
+//            model = self.commentDicArray[section];
+            NSString *content = model.content_filter;
+            content = [content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]; //去除掉首尾的空白字符和换行字符
+            content = [content stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+            content = [content stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+            content = [content stringByReplacingOccurrencesOfString:@"" withString:@""];
+            CGFloat height = [self getCommentHeightWithString:content];
+            CGSize size = [content textSizeWithFont:[UIFont fontWithName:Font_Name_PFSCRe size:12] constrainedToSize:CGSizeMake(kSCREEN_Width-20, MAXFLOAT)];
+            height = ceilf(size.height)+1;
+            
+            NSNumber *number = [NSNumber numberWithFloat:height];
+            [self.commentHightArray addObject:number];//根据计算高度
+        }
+        [self.detailView.commentTableView reloadData];
+    }
+    
+}
+#pragma mark -- 点赞按钮点击事件
+- (void)replayButtonClickAction:(UIButton *)button {
+    
+    NSInteger index = button.tag - 1000;
+    self.replyIndex = index;
+    self.inputView.inputStatus = InputViewReplyStatus;
+    
+    //根据评论内容获取名字加入评论存入本地
+    [self.inputView.inputTextField becomeFirstResponder];
+    
+}
+#pragma mark -- 举报按钮点击事件
+- (void)reportButtonClickAction:(UIButton *)button {
+    
+    NSInteger index = button.tag - 2000;
+    NSLog(@"%ld",index);
+    [self createAlertViewWithTitle:@"提示" message:@"确定要举报吗？"];
+    WeakSelf(self);
+    self.makeSureAction = ^{
+        //
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            //
+            MBProgressHUD *mb_hud = [MBProgressHUD showHUDAddedTo:weakSelf.view animated:NO];
+            mb_hud.label.text = @"举报成功";
+            mb_hud.label.font = [UIFont fontWithName:Font_Name_PFSCRe size:13];
+            mb_hud.label.textColor = kRGB(40, 40, 40, 1);
+            mb_hud.mode =MBProgressHUDModeText;
+            [mb_hud hideAnimated:YES afterDelay:1.0];
+        });
+    };
+    //应该说弹出视图确定要举报吗？
+}
+#pragma mark -- sectionHeader点击事件
+- (void)sectionHeaderTapGesture:(UITapGestureRecognizer *)recognizer {
+    
+    NSInteger index = recognizer.view.tag-200;
+    if ([self.inputView.inputTextField isFirstResponder]) {
+        
+        [self.inputView.inputTextField resignFirstResponder];
+    }
+    if (self.isDisplay) {
+        //如果是显示
+        [UIView animateWithDuration:0.3 animations:^{
+            //
+            self.inputView.frame = CGRectMake(0, self.view.frame.size.height+2, kSCREEN_Width, 44);
+        }];
+        
+    }else{
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            //
+            self.inputView.frame = CGRectMake(0, self.view.frame.size.height-44, kSCREEN_Width, 44);
+        }];
+    }
+    self.isDisplay = !self.isDisplay;
 }
 #pragma mark -- collectionView代理方法
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -335,8 +631,23 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
 }
 #pragma mark -- 头部视图三个按钮点击方法代理方法
 - (void)clickedButton:(UIButton *)button index:(NSInteger)index {
+    //
+    if (index == 2) {
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            //
+            self.inputView.frame = CGRectMake(0, kSCREEN_Height-64, kSCREEN_Width, 64);
+        }];
+    }else{
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            //
+            self.inputView.frame = CGRectMake(0, kSCREEN_Height+64, kSCREEN_Width, 64);
+        }];
+    }
     //根据代理找到点击的按钮以及按钮的下标
     [self.detailView setContentOffset:CGPointMake(index*kSCREEN_Width, 0)];
+    
 }
 #pragma mark -- 返回按钮点击方法
 - (void)backItemClickAction {
@@ -358,7 +669,6 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
     }
     //返回上个视图
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 #pragma mark -- 收藏按钮点击方法
 - (void)collectItemClickAction:(UIButton *)button {
@@ -393,7 +703,7 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
                 [modelDic setObject:self.comicDetailModel.short_description forKey:@"shortDescription"];
                 [array addObject:modelDic];
                 [[NSUserDefaults standardUserDefaults] setObject:array forKey:kCollectionArray];
-                //            [button setImage:[UIImage imageNamed:@"ic_details_top_collection_prressed_21x21_"] forState:(UIControlStateNormal)];
+                //[button setImage:[UIImage imageNamed:@"ic_details_top_collection_prressed_21x21_"] forState:(UIControlStateNormal)];
                 [button setImage:[UIImage imageNamed:@"ic_details_top_collection_prressed_21x21_"] forState:(UIControlStateNormal)];
                 [self showAlertHUDWithMessage:@"收藏成功" showView:self.view];
                 
@@ -414,8 +724,8 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
 //        CGFloat contentOffset_x = scrollView.contentOffset.x;
 //        CGFloat scanf = contentOffset_x/kSCREEN_Width*3;
 //        CGFloat anim_x = scanf * kSCREEN_Width;
-        //        CGRect rect = CGRectMake(anim_x, 0, 0, 0);
-        //        [self.detailHeaderView.tittleButton scrollBarScrollAnimation:rect];
+        //CGRect rect = CGRectMake(anim_x, 0, 0, 0);
+        //[self.detailHeaderView.tittleButton scrollBarScrollAnimation:rect];
         self.isHorizontal = YES;
         NSLog(@"右滑");
     }else if(translatedPoint.x > 0 && translatedPoint.y == 0){
@@ -598,6 +908,16 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
     }
     return _nameArray;
 }
+- (NSMutableArray *)commentDicArray {
+    
+    if (!_commentDicArray) {
+        
+        _commentDicArray = [[NSMutableArray alloc] init];
+    }
+    
+    return _commentDicArray;
+}
+
 /*
 #pragma mark - Navigation
 

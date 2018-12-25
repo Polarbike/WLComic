@@ -14,6 +14,12 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - BGFMDB (2.0.13):
+    - BGFMDB/BG (= 2.0.13)
+    - BGFMDB/FMDB (= 2.0.13)
+  - BGFMDB/BG (2.0.13):
+    - BGFMDB/FMDB
+  - BGFMDB/FMDB (2.0.13)
   - JQImagePicker (0.0.4)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
@@ -38,6 +44,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
+  - BGFMDB (~> 2.0.13)
   - JQImagePicker (~> 0.0.4)
   - Masonry (~> 1.1.0)
   - MBProgressHUD (~> 1.1.0)
@@ -51,6 +58,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - BGFMDB
     - JQImagePicker
     - Masonry
     - MBProgressHUD
@@ -64,6 +72,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  BGFMDB: 48e6823027232402a678acc7f71484b1fc9171d0
   JQImagePicker: 8d8160b4b2f25bc2dba2f0cc80dd97ac4a67a229
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
@@ -75,6 +84,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: ace61a954d7afcb45723f215af2e49145c726fe0
+PODFILE CHECKSUM: 1ea38c0dbada1443c66ff45f917f68da14c184e0
 
 COCOAPODS: 1.5.3

@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuickAnimation/Moduels/HomeModule/RightDetailViewController/Views/RightDetailHeader.m"
-            timestampString = "565965309.964661"
+            timestampString = "567323711.118194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
@@ -41,38 +41,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QuickAnimation/Moduels/HomeModule/RightDetailViewController/Controllers/RightDetailViewController.m"
-            timestampString = "566733996.631532"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
-            landmarkName = "-collectItemClickAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QuickAnimation/Moduels/HomeModule/RightDetailViewController/Controllers/RightDetailViewController.m"
-            timestampString = "566733996.632013"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
-            landmarkName = "-collectItemClickAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "QuickAnimation/Moduels/MineModule/ViewConrollers/CollectionViewController.m"
             timestampString = "566292987.500779"
             startingColumnNumber = "9223372036854775807"
@@ -89,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QuickAnimation/Moduels/HomeModule/HomeViewController.m"
-            timestampString = "566733996.632524"
+            filePath = "QuickAnimation/Moduels/DiscoverModule/DiscoverViewController.m"
+            timestampString = "567404337.532707"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
-            landmarkName = "-getLoginViewLogStatus:name:"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-fetchDiscoverData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,29 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QuickAnimation/Tools/MHNetworking.h"
-            timestampString = "566733996.632692"
+            filePath = "QuickAnimation/Moduels/HomeModule/RightDetailViewController/Controllers/RightDetailViewController.m"
+            timestampString = "567427050.840439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QuickAnimation/Moduels/HomeModule/HomeViewController.m"
-            timestampString = "566733996.632758"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "-getGuessLikeDataOperation"
+            startingLineNumber = "529"
+            endingLineNumber = "529"
+            landmarkName = "-reloadCommentTableViewData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -137,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QuickAnimation/Moduels/HomeModule/HomeViewController.m"
-            timestampString = "566733996.632802"
+            filePath = "QuickAnimation/Moduels/HomeModule/RightDetailViewController/Controllers/RightDetailViewController.m"
+            timestampString = "567427050.8405499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "-getHomePageData"
+            startingLineNumber = "535"
+            endingLineNumber = "535"
+            landmarkName = "-reloadCommentTableViewData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

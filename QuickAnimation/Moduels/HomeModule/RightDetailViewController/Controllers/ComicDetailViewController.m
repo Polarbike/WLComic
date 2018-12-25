@@ -54,14 +54,13 @@ static NSString *chapter_identifier = @"chapterDetailCell";
     //
     UINib *nib = [UINib nibWithNibName:@"ChapterDetailTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:chapter_identifier];
-//    _tableView.backgroundColor = [UIColor grayColor];
+    //_tableView.backgroundColor = [UIColor grayColor];
     
     self.backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     self.backButton.frame = CGRectMake(20, 32, 40, 40);
     [self.backButton setImage:[UIImage imageNamed:@"ic_nav_back_normal_11x19_"] forState:(UIControlStateNormal)];
     [self.backButton addTarget:self action:@selector(backButtonClickAction) forControlEvents:(UIControlEventTouchUpInside)];
     //数据请求结束之前不能点击返回按钮
-    
     [self.view addSubview:self.backButton];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     //更改详情页左侧返回按钮样子
@@ -118,6 +117,7 @@ static NSString *chapter_identifier = @"chapterDetailCell";
         self.backButton.frame = CGRectMake(-40, 32, 40, 40);
     } completion:^(BOOL finished) {
         //
+        
     }];
     
 }
@@ -134,9 +134,7 @@ static NSString *chapter_identifier = @"chapterDetailCell";
 #pragma mark -- tableView代理方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    
     return 1;
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -157,17 +155,15 @@ static NSString *chapter_identifier = @"chapterDetailCell";
     ImagesDataModel *model = [[ImagesDataModel alloc] init];
     model = self.imageModelArray[indexPath.row];
 //    [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
-//                                 forHTTPHeaderField:@"Accept"];
+//  forHTTPHeaderField:@"Accept"];
     NSURL *imageUrl = [NSURL URLWithString:model.img05];
 //    cell.comicImage.yy_imageURL = imageUrl;
     [cell.comicImage yy_setImageWithURL:imageUrl options:YYWebImageOptionProgressiveBlur | YYWebImageOptionSetImageWithFadeAnimation];
-
 //    [cell.comicImage sd_setImageWithURL:[NSURL URLWithString:model.img05] placeholderImage:[UIImage imageNamed:@"nurto.jpg"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 //        //在这里输出下error
 //
 //    }];
 
-    
 //    [cell.comicImage sd_setImageWithURL:[NSURL URLWithString:model.img05] placeholderImage:[UIImage imageNamed:@"nurto.jpg"]];
     return cell;
     
@@ -243,6 +239,8 @@ static NSString *chapter_identifier = @"chapterDetailCell";
 ////            [self.detailView.collectionView reloadData];
 ////            //根据self.comicDetailModel的值进行评论数据请求
 ////            [self fetchCommentData];
+//              with animation complete ;
+//              jiushitianqihao 
 //        }
 //    }
 //

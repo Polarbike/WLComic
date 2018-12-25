@@ -18,7 +18,6 @@
         
         // 初始化时加载collectionCell.xib文件
         NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:@"ChapterCollectionViewCell" owner:self options:nil];
-        
         // 如果路径不存在，return nil
         if (arrayOfViews.count < 1)
         {

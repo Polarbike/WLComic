@@ -289,7 +289,6 @@ static NSString *const right_sectionHeader_identifier = @"RightSectionHeaderView
 //        return cell;
 //    }else{
     
-    
         LeftTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:left_identifier];
         ComicsModel *model = self.guessLikeComicArray[indexPath.row];
         cell.namelabel.text = model.name;
@@ -409,7 +408,7 @@ static NSString *const right_sectionHeader_identifier = @"RightSectionHeaderView
     
     UICollectionReusableView *sectionHeaderView = nil;
     if (kind == UICollectionElementKindSectionHeader) {
-        
+        //将banner加在header view上
         RightSectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:right_sectionHeader_identifier forIndexPath:indexPath];
         HomeModel *model = [[HomeModel alloc] init];
         model = self.homepageArray[indexPath.section];
@@ -422,6 +421,7 @@ static NSString *const right_sectionHeader_identifier = @"RightSectionHeaderView
         [headerView.moreButton addTarget:self action:@selector(headerViewMoreButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
         sectionHeaderView = headerView;
     }
+    
     return sectionHeaderView;
 }
 //collectionViewItem被点击方法

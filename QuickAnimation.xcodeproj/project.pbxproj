@@ -57,6 +57,15 @@
 		F05C9FAB21BE4EE000917EC5 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F05C9FAA21BE4EE000917EC5 /* CollectionViewController.m */; };
 		F05C9FAE21BE5A7F00917EC5 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F05C9FAD21BE5A7F00917EC5 /* HistoryViewController.m */; };
 		F0AF7CEC21C689830074E8F7 /* MHNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7CEB21C689830074E8F7 /* MHNetworking.m */; };
+		F0AF7D2D21CB70650074E8F7 /* CommentSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7D2C21CB70650074E8F7 /* CommentSectionHeaderView.m */; };
+		F0AF7D3821CB95E90074E8F7 /* CommentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7D3721CB95E90074E8F7 /* CommentInputView.m */; };
+		F0AF7D7821CCC67B0074E8F7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AF7D7721CCC67A0074E8F7 /* libsqlite3.tbd */; };
+		F0AF7D7C21CCED740074E8F7 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7D7B21CCED740074E8F7 /* SearchViewController.m */; };
+		F0AF7D8621CCEE4C0074E8F7 /* SearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7D8521CCEE4C0074E8F7 /* SearchBar.m */; };
+		F0AF7D8921CCFDD80074E8F7 /* SearchSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7D8821CCFDD80074E8F7 /* SearchSectionHeaderView.m */; };
+		F0AF7D9221CD13920074E8F7 /* SearchCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7D9121CD13920074E8F7 /* SearchCollectionViewCell.m */; };
+		F0AF7D9621D0A2ED0074E8F7 /* HotSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7D9521D0A2ED0074E8F7 /* HotSearchModel.m */; };
+		F0AF7D9821D1EBCC0074E8F7 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = F0AF7D9721D1EBCC0074E8F7 /* delete.png */; };
 		F0B3E5AF21BE612F001A104B /* AttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3E5AE21BE612F001A104B /* AttentionViewController.m */; };
 		F0B3E5B321BE7C05001A104B /* EditUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3E5B121BE7C05001A104B /* EditUserViewController.m */; };
 		F0B3E5B421BE7C05001A104B /* EditUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0B3E5B221BE7C05001A104B /* EditUserViewController.xib */; };
@@ -201,6 +210,22 @@
 		F05C9FAD21BE5A7F00917EC5 /* HistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		F0AF7CEA21C689830074E8F7 /* MHNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MHNetworking.h; sourceTree = "<group>"; };
 		F0AF7CEB21C689830074E8F7 /* MHNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHNetworking.m; sourceTree = "<group>"; };
+		F0AF7D2B21CB70650074E8F7 /* CommentSectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentSectionHeaderView.h; sourceTree = "<group>"; };
+		F0AF7D2C21CB70650074E8F7 /* CommentSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentSectionHeaderView.m; sourceTree = "<group>"; };
+		F0AF7D3621CB95E90074E8F7 /* CommentInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentInputView.h; sourceTree = "<group>"; };
+		F0AF7D3721CB95E90074E8F7 /* CommentInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentInputView.m; sourceTree = "<group>"; };
+		F0AF7D7721CCC67A0074E8F7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		F0AF7D7A21CCED740074E8F7 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		F0AF7D7B21CCED740074E8F7 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		F0AF7D8421CCEE4C0074E8F7 /* SearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchBar.h; sourceTree = "<group>"; };
+		F0AF7D8521CCEE4C0074E8F7 /* SearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchBar.m; sourceTree = "<group>"; };
+		F0AF7D8721CCFDD80074E8F7 /* SearchSectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchSectionHeaderView.h; sourceTree = "<group>"; };
+		F0AF7D8821CCFDD80074E8F7 /* SearchSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchSectionHeaderView.m; sourceTree = "<group>"; };
+		F0AF7D9021CD13920074E8F7 /* SearchCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCollectionViewCell.h; sourceTree = "<group>"; };
+		F0AF7D9121CD13920074E8F7 /* SearchCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCollectionViewCell.m; sourceTree = "<group>"; };
+		F0AF7D9421D0A2ED0074E8F7 /* HotSearchModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotSearchModel.h; sourceTree = "<group>"; };
+		F0AF7D9521D0A2ED0074E8F7 /* HotSearchModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotSearchModel.m; sourceTree = "<group>"; };
+		F0AF7D9721D1EBCC0074E8F7 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		F0B3E5AD21BE612F001A104B /* AttentionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttentionViewController.h; sourceTree = "<group>"; };
 		F0B3E5AE21BE612F001A104B /* AttentionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttentionViewController.m; sourceTree = "<group>"; };
 		F0B3E5B021BE7C05001A104B /* EditUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditUserViewController.h; sourceTree = "<group>"; };
@@ -271,6 +296,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0AF7D7821CCC67B0074E8F7 /* libsqlite3.tbd in Frameworks */,
 				5F763E67C1488B071E3ACEEA /* libPods-QuickAnimation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +336,7 @@
 		B9AA0D06FDBA2AB54D768F15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0AF7D7721CCC67A0074E8F7 /* libsqlite3.tbd */,
 				348AB5B59424F8C6E1D5A74D /* libPods-QuickAnimation.a */,
 				23BCD9FC54BBAF5EA21E9C6A /* libPods-QuickAnimationTests.a */,
 				45DACA6BD6B95619678531C7 /* libPods-QuickAnimationUITests.a */,
@@ -441,6 +468,10 @@
 				F05C9F8221BBEDE500917EC5 /* ChapterDetailTableViewCell.h */,
 				F05C9F8321BBEDE500917EC5 /* ChapterDetailTableViewCell.m */,
 				F05C9F8421BBEDE500917EC5 /* ChapterDetailTableViewCell.xib */,
+				F0AF7D2B21CB70650074E8F7 /* CommentSectionHeaderView.h */,
+				F0AF7D2C21CB70650074E8F7 /* CommentSectionHeaderView.m */,
+				F0AF7D3621CB95E90074E8F7 /* CommentInputView.h */,
+				F0AF7D3721CB95E90074E8F7 /* CommentInputView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -503,6 +534,39 @@
 				F0B3E5B221BE7C05001A104B /* EditUserViewController.xib */,
 			);
 			path = ViewConrollers;
+			sourceTree = "<group>";
+		};
+		F0AF7D7921CCED4E0074E8F7 /* SearchModule */ = {
+			isa = PBXGroup;
+			children = (
+				F0AF7D9321D0A2A50074E8F7 /* Model */,
+				F0AF7D7D21CCED7A0074E8F7 /* SearchView */,
+				F0AF7D7A21CCED740074E8F7 /* SearchViewController.h */,
+				F0AF7D7B21CCED740074E8F7 /* SearchViewController.m */,
+			);
+			path = SearchModule;
+			sourceTree = "<group>";
+		};
+		F0AF7D7D21CCED7A0074E8F7 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				F0AF7D8421CCEE4C0074E8F7 /* SearchBar.h */,
+				F0AF7D8521CCEE4C0074E8F7 /* SearchBar.m */,
+				F0AF7D8721CCFDD80074E8F7 /* SearchSectionHeaderView.h */,
+				F0AF7D8821CCFDD80074E8F7 /* SearchSectionHeaderView.m */,
+				F0AF7D9021CD13920074E8F7 /* SearchCollectionViewCell.h */,
+				F0AF7D9121CD13920074E8F7 /* SearchCollectionViewCell.m */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
+		F0AF7D9321D0A2A50074E8F7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F0AF7D9421D0A2ED0074E8F7 /* HotSearchModel.h */,
+				F0AF7D9521D0A2ED0074E8F7 /* HotSearchModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F0B3E5CE21C10470001A104B /* RightModel */ = {
@@ -585,6 +649,7 @@
 		F0F0AAD221AE6DFF00FF84CD /* Moduels */ = {
 			isa = PBXGroup;
 			children = (
+				F0AF7D7921CCED4E0074E8F7 /* SearchModule */,
 				F00054D021B15C8700C32111 /* LoginModule */,
 				F0F0AADE21AE80FE00FF84CD /* MineModule */,
 				F0F0AADA21AE807900FF84CD /* WorldModule */,
@@ -677,6 +742,7 @@
 				F05C9FA321BE422300917EC5 /* logout.png */,
 				F0F0AAF621AFC49700FF84CD /* nurto.jpg */,
 				F05C9F6821BA885C00917EC5 /* userIcon.png */,
+				F0AF7D9721D1EBCC0074E8F7 /* delete.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -817,6 +883,7 @@
 				F05C9F6921BA885C00917EC5 /* userIcon.png in Resources */,
 				F0F0AAF721AFC49700FF84CD /* nurto.jpg in Resources */,
 				F05C9F5F21B91E1A00917EC5 /* ChapterCollectionViewCell.xib in Resources */,
+				F0AF7D9821D1EBCC0074E8F7 /* delete.png in Resources */,
 				F05C9FA421BE422300917EC5 /* logout.png in Resources */,
 				F0B3E5C921C0EDED001A104B /* RightCollectionViewCell.xib in Resources */,
 				F0F0AAF521AFBC0C00FF84CD /* HotTableViewCell.xib in Resources */,
@@ -949,6 +1016,7 @@
 				F05C9F7D21BBA66D00917EC5 /* KYBubbleTransition.m in Sources */,
 				F0F0AAE121AE811700FF84CD /* MineViewController.m in Sources */,
 				F05C9F7E21BBA66D00917EC5 /* KYBubbleInteractiveTransition.m in Sources */,
+				F0AF7D3821CB95E90074E8F7 /* CommentInputView.m in Sources */,
 				F0F0AAAA21AE6B4A00FF84CD /* main.m in Sources */,
 				F05C9F3721B79D8E00917EC5 /* LLNetwork.m in Sources */,
 				F0F0AB1421B0091900FF84CD /* DiscoverNavBar.m in Sources */,
@@ -959,11 +1027,13 @@
 				F05C9F1E21B65B3A00917EC5 /* MineFooterView.m in Sources */,
 				F05C9F2321B65FB500917EC5 /* MineTableViewCell.m in Sources */,
 				F05C9F9A21BE22C600917EC5 /* ClassModel.m in Sources */,
+				F0AF7D8621CCEE4C0074E8F7 /* SearchBar.m in Sources */,
 				F05C9F8121BBD7A700917EC5 /* ImagesDataModel.m in Sources */,
 				F0B3E5D121C1054A001A104B /* HomeModel.m in Sources */,
 				F05C9F8A21BCF9B200917EC5 /* GalleryItemModel.m in Sources */,
 				F05C9FAE21BE5A7F00917EC5 /* HistoryViewController.m in Sources */,
 				F00054DA21B50F8600C32111 /* DiscoverCollectionViewCell.m in Sources */,
+				F0AF7D9621D0A2ED0074E8F7 /* HotSearchModel.m in Sources */,
 				F05C9F8D21BD0FD400917EC5 /* CollectionHeaderView.m in Sources */,
 				F05C9F4921B80DA700917EC5 /* DetailTittleButton.m in Sources */,
 				F0F0AACE21AE6B7900FF84CD /* BaseViewController.m in Sources */,
@@ -983,15 +1053,19 @@
 				F0B3E5D521C12F84001A104B /* MoreComicViewController.m in Sources */,
 				F0F0AAFE21AFD23A00FF84CD /* RightDetailHeader.m in Sources */,
 				F05C9F2E21B69CAD00917EC5 /* Dis_DetailViewController.m in Sources */,
+				F0AF7D9221CD13920074E8F7 /* SearchCollectionViewCell.m in Sources */,
 				F05C9F9521BE14BE00917EC5 /* CollectionViewCell.m in Sources */,
+				F0AF7D7C21CCED740074E8F7 /* SearchViewController.m in Sources */,
 				F00054D321B15CA900C32111 /* LoginViewController.m in Sources */,
 				F0B3E5AF21BE612F001A104B /* AttentionViewController.m in Sources */,
 				F05C9F5621B9108D00917EC5 /* ChapterModel.m in Sources */,
+				F0AF7D8921CCFDD80074E8F7 /* SearchSectionHeaderView.m in Sources */,
 				F0B3E5C821C0EDED001A104B /* RightCollectionViewCell.m in Sources */,
 				F05C9F7321BAAEDB00917EC5 /* ComicDetailViewController.m in Sources */,
 				F05C9F4321B7E35500917EC5 /* ComicsModel.m in Sources */,
 				F0B3E5BD21BE991F001A104B /* RegistForgetViewController.m in Sources */,
 				F00054D621B15CC800C32111 /* LoginView.m in Sources */,
+				F0AF7D2D21CB70650074E8F7 /* CommentSectionHeaderView.m in Sources */,
 				F0AF7CEC21C689830074E8F7 /* MHNetworking.m in Sources */,
 				F05C9F5321B90B7500917EC5 /* ComicDetailModel.m in Sources */,
 				F0F0AA9C21AE6B4900FF84CD /* AppDelegate.m in Sources */,

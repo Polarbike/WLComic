@@ -7,6 +7,8 @@
 //
 
 #import "RightDetailVIew.h"
+#import "CommentInputView.h"
+
 
 @implementation RightDetailVIew
 
@@ -33,6 +35,8 @@
         self.pagingEnabled = YES;
         self.contentSize = CGSizeMake(kSCREEN_Width*3, frame.size.height);
         self.backgroundColor = [UIColor whiteColor];
+        //
+        
     }
     
     return self;
@@ -42,7 +46,7 @@
     
     self.detailTableView.frame = CGRectMake(0, 0, kSCREEN_Width, self.frame.size.height);
     self.collectionView.frame = CGRectMake(kSCREEN_Width, 0, kSCREEN_Width, self.frame.size.height);
-    self.commentTableView.frame = CGRectMake(kSCREEN_Width*2, 0, kSCREEN_Width, self.frame.size.height);
+    self.commentTableView.frame = CGRectMake(kSCREEN_Width*2, 0, kSCREEN_Width, self.frame.size.height-44);
     
 }
 

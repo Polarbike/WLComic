@@ -184,6 +184,24 @@
     [[NSUserDefaults standardUserDefaults] setObject:dic forKey:kUserInfo];
     
 }
+//
+- (void)createAlertViewWithTitle:(NSString *)title message:(NSString *)message {
+    
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        //
+        self.makeSureAction();
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        //
+        NSLog(@"取消操作");
+    }];
+    //添加的先后顺序决定从左到右的顺序
+    [alertVC addAction:cancelAction];
+    [alertVC addAction:okAction];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+
 /*
 #pragma mark - Navigation
 

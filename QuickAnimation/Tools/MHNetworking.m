@@ -184,7 +184,54 @@ static MHNetworking *_instance = nil;
         failure(error);
     }];
 }
-
+#pragma mark -- 获取输入关系搜索信息
++ (void)getSearchDataWithParameters:(NSDictionary *)parameters success:(void(^)(id result))success failure:(void(^)(id error))failure {
+    
+    //    NSString *method = @"GET";
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", kBASEUrl, kSearchRelative];
+    //    AFHTTPRequestOperation *requestOperation = [NCNetwork requestWithMethod:method url:urlString Parameters:parameters delegate:delegate];
+    //    return requestOperation;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //
+        failure(error);
+    }];
+}
+#pragma mark -- 获取大家热搜索信息
++ (void)getHotSearchDataWithParameters:(NSDictionary *)parameters success:(void(^)(id result))success failure:(void(^)(id error))failure {
+    
+    //    NSString *method = @"GET";
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", kBASEUrl, kSearchHot];
+    //    AFHTTPRequestOperation *requestOperation = [NCNetwork requestWithMethod:method url:urlString Parameters:parameters delegate:delegate];
+    //    return requestOperation;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //
+        failure(error);
+    }];
+}
+#pragma mark -- 根据关系搜索获取搜索结果搜索信息
++ (void)getResultSearchDataWithParameters:(NSDictionary *)parameters success:(void(^)(id result))success failure:(void(^)(id error))failure {
+    
+    //    NSString *method = @"GET";
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", kBASEUrl, kSearchResult];
+    //    AFHTTPRequestOperation *requestOperation = [NCNetwork requestWithMethod:method url:urlString Parameters:parameters delegate:delegate];
+    //    return requestOperation;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //
+        failure(error);
+    }];
+}
 
 
 @end

@@ -19,6 +19,11 @@
 #define kGuessLike                @"comic/guessLike"//猜你喜欢
 
 #define kHomeDataList             @"comic/boutiqueListNew"//首页内容网络请求
+#define kSearchRelative           @"search/relative"//关系搜索
+#define kSearchHot                @"search/hotkeywordsnew"//热搜内容
+#define kSearchResult             @"search/searchResult"//根据关系搜索去搜索结果
+
+
 
 #define kAPIKey                   @"fabe6953ce6a1b8738bd2cabebf893a472d2b6274ef7ef6f6a5dc7171e5cafb14933ae65c70bceb97e0e9d47af6324d50394ba70c1bb462e0ed18b88b26095a82be87bc9eddf8e548a2a3859274b25bd0ecfce13e81f8317cfafa822d8ee486fe2c43e7acd93e9f19fdae5c628266dc4762060f6026c5ca83e865844fc6beea59822ed4a70f5288c25edb1367700ebf5c78a27f5cce53036f1dac4a776588cd890cd54f9e5a7adcaeec340c7a69cd986:::open"
 
@@ -65,6 +70,14 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)getGuessLikeDataWithParameters:(NSDictionary *)parameters success:(void(^)(id result))success failure:(void(^)(id error))failure;
 #pragma mark -- 获取到首页信息
 + (void)getHomeDetailDataWithParameters:(NSDictionary *)parameters success:(void(^)(id result))success failure:(void(^)(id error))failure;
+#pragma mark -- 获取输入关系搜索信息
++ (void)getSearchDataWithParameters:(NSDictionary *)parameters success:(void(^)(id result))success failure:(void(^)(id error))failure;
+#pragma mark -- 获取大家热搜信息
++ (void)getHotSearchDataWithParameters:(NSDictionary *)parameters success:(void(^)(id result))success failure:(void(^)(id error))failure;
+#pragma mark -- 根据关系搜索获取搜索结果搜索信息
++ (void)getResultSearchDataWithParameters:(NSDictionary *)parameters success:(void(^)(id result))success failure:(void(^)(id error))failure;
+
+
 
 @end
 

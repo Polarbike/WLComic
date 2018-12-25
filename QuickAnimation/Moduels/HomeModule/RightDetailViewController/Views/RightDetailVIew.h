@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CommentInputView;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) UICollectionView *collectionView;//目录collectionView
 @property(nonatomic,strong) UITableView *commentTableView;//评论tableView
 
+@property(nonatomic,strong) CommentInputView *inputView;//评论输入框
 
 @end
 

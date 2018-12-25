@@ -19,8 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,strong) NSMutableDictionary *parameter;//默认参数
 
+@property(nonatomic,copy) dispatch_block_t makeSureAction;
 
 
+- (void)createAlertViewWithTitle:(NSString *)title message:(NSString *)message;
 - (void)showMBProgressHUDWithMessage:(NSString *)message showLabel:(BOOL)isShowLabel isShowTime:(BOOL)isShowTime;
 - (void)hideMBProgressHUD;
 //根据评论内容计算高度

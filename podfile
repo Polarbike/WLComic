@@ -19,6 +19,8 @@ target 'QuickAnimation' do
    pod 'YYImage/WebP'
    pod 'JQImagePicker', '~> 0.0.4'
    pod 'PPNetworkHelper', '~> 0.8.1'
+   pod 'BGFMDB', '~> 2.0.13'
+
   target 'QuickAnimationTests' do
     inherit! :search_paths
     # Pods for testing
