@@ -37,6 +37,9 @@
 #import "CommentInputView.h"
 
 #import "BGFMDB.h"
+//举报按钮
+#import "ReportViewController.h"
+
 
 
 
@@ -468,8 +471,8 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
         NSNumber *height = self.commentHightArray.count>0?self.commentHightArray[section]:0;
         CGFloat float_cell = [height floatValue]+kCommentUI_height;
         CommentSectionHeaderView *sectionHeader = [[CommentSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_Width, float_cell+5)];
-        sectionHeader.replyButton.tag = 1000 + section;
-        [sectionHeader.replyButton addTarget:self action:@selector(replayButtonClickAction:) forControlEvents:(UIControlEventTouchUpInside)];
+//        sectionHeader.replyButton.tag = 1000 + section;
+//        [sectionHeader.replyButton addTarget:self action:@selector(replayButtonClickAction:) forControlEvents:(UIControlEventTouchUpInside)];
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionHeaderTapGesture:)];
         sectionHeader.tag = 200 + section;
@@ -550,12 +553,24 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
 #pragma mark -- 点赞按钮点击事件
 - (void)replayButtonClickAction:(UIButton *)button {
     
-    NSInteger index = button.tag - 1000;
-    self.replyIndex = index;
-    self.inputView.inputStatus = InputViewReplyStatus;
-    
+//    NSInteger index = button.tag - 1000;
+//    self.replyIndex = index;
+//    self.inputView.inputStatus = InputViewReplyStatus;
     //根据评论内容获取名字加入评论存入本地
-    [self.inputView.inputTextField becomeFirstResponder];
+//    [self.inputView.inputTextField becomeFirstResponder];
+        //根据tag值可以找到cell的index，根绝index去确定对数组中的哪组数据赞，去执行动画并处理数据
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+//        CommentTableViewCell *commentCell = [self.detailView.commentTableView cellForRowAtIndexPath:indexPath];
+//    CommentSectionHeaderView headerView = 
+//        //将按钮选择状态取反
+//        button.selected = !button.selected;
+//        if (button.isSelected) {
+//            //
+//            [commentCell buttonSelectedAnimation];
+//        }else{
+//            //
+//            [commentCell buttonCancelSelectedAnimation];
+//        }
     
 }
 #pragma mark -- 举报按钮点击事件
@@ -563,26 +578,28 @@ static NSString *const comment_identifier = @"CommentTableViewCell";
     
     NSInteger index = button.tag - 2000;
     NSLog(@"%ld",index);
-    [self createAlertViewWithTitle:@"提示" message:@"确定要举报吗？"];
-    WeakSelf(self);
-    self.makeSureAction = ^{
-        //
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            //
-            MBProgressHUD *mb_hud = [MBProgressHUD showHUDAddedTo:weakSelf.view animated:NO];
-            mb_hud.label.text = @"举报成功";
-            mb_hud.label.font = [UIFont fontWithName:Font_Name_PFSCRe size:13];
-            mb_hud.label.textColor = kRGB(40, 40, 40, 1);
-            mb_hud.mode =MBProgressHUDModeText;
-            [mb_hud hideAnimated:YES afterDelay:1.0];
-        });
-    };
+//    [self createAlertViewWithTitle:@"提示" message:@"确定要举报吗？"];
+//    WeakSelf(self);
+//    self.makeSureAction = ^{
+//        //
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            
+//            MBProgressHUD *mb_hud = [MBProgressHUD showHUDAddedTo:weakSelf.view animated:NO];
+//            mb_hud.label.text = @"举报成功";
+//            mb_hud.label.font = [UIFont fontWithName:Font_Name_PFSCRe size:13];
+//            mb_hud.label.textColor = kRGB(40, 40, 40, 1);
+//            mb_hud.mode =MBProgressHUDModeText;
+//            [mb_hud hideAnimated:YES afterDelay:1.0];
+//        });
+//    };
     //应该说弹出视图确定要举报吗？
+    ReportViewController *reportVC = [[ReportViewController alloc] init];
+    [self.navigationController presentViewController:reportVC animated:YES completion:nil];
 }
 #pragma mark -- sectionHeader点击事件
 - (void)sectionHeaderTapGesture:(UITapGestureRecognizer *)recognizer {
     
-    NSInteger index = recognizer.view.tag-200;
+//    NSInteger index = recognizer.view.tag-200;
     if ([self.inputView.inputTextField isFirstResponder]) {
         
         [self.inputView.inputTextField resignFirstResponder];

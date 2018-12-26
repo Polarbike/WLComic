@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuickAnimation/Moduels/HomeModule/RightDetailViewController/Controllers/RightDetailViewController.m"
-            timestampString = "567427050.840439"
+            timestampString = "567502665.883907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "529"
-            endingLineNumber = "529"
+            startingLineNumber = "531"
+            endingLineNumber = "531"
             landmarkName = "-reloadCommentTableViewData"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuickAnimation/Moduels/HomeModule/RightDetailViewController/Controllers/RightDetailViewController.m"
-            timestampString = "567427050.8405499"
+            timestampString = "567502665.8839951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "535"
-            endingLineNumber = "535"
+            startingLineNumber = "537"
+            endingLineNumber = "537"
             landmarkName = "-reloadCommentTableViewData"
             landmarkType = "7">
          </BreakpointContent>

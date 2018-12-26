@@ -66,6 +66,8 @@
 		F0AF7D9221CD13920074E8F7 /* SearchCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7D9121CD13920074E8F7 /* SearchCollectionViewCell.m */; };
 		F0AF7D9621D0A2ED0074E8F7 /* HotSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7D9521D0A2ED0074E8F7 /* HotSearchModel.m */; };
 		F0AF7D9821D1EBCC0074E8F7 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = F0AF7D9721D1EBCC0074E8F7 /* delete.png */; };
+		F0AF7D9B21D3533F0074E8F7 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7D9A21D3533F0074E8F7 /* ReportViewController.m */; };
+		F0AF7D9E21D357A80074E8F7 /* ReportView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF7D9D21D357A80074E8F7 /* ReportView.m */; };
 		F0B3E5AF21BE612F001A104B /* AttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3E5AE21BE612F001A104B /* AttentionViewController.m */; };
 		F0B3E5B321BE7C05001A104B /* EditUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3E5B121BE7C05001A104B /* EditUserViewController.m */; };
 		F0B3E5B421BE7C05001A104B /* EditUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0B3E5B221BE7C05001A104B /* EditUserViewController.xib */; };
@@ -226,6 +228,10 @@
 		F0AF7D9421D0A2ED0074E8F7 /* HotSearchModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotSearchModel.h; sourceTree = "<group>"; };
 		F0AF7D9521D0A2ED0074E8F7 /* HotSearchModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotSearchModel.m; sourceTree = "<group>"; };
 		F0AF7D9721D1EBCC0074E8F7 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		F0AF7D9921D3533F0074E8F7 /* ReportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
+		F0AF7D9A21D3533F0074E8F7 /* ReportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
+		F0AF7D9C21D357A80074E8F7 /* ReportView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReportView.h; sourceTree = "<group>"; };
+		F0AF7D9D21D357A80074E8F7 /* ReportView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReportView.m; sourceTree = "<group>"; };
 		F0B3E5AD21BE612F001A104B /* AttentionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttentionViewController.h; sourceTree = "<group>"; };
 		F0B3E5AE21BE612F001A104B /* AttentionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttentionViewController.m; sourceTree = "<group>"; };
 		F0B3E5B021BE7C05001A104B /* EditUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditUserViewController.h; sourceTree = "<group>"; };
@@ -472,6 +478,8 @@
 				F0AF7D2C21CB70650074E8F7 /* CommentSectionHeaderView.m */,
 				F0AF7D3621CB95E90074E8F7 /* CommentInputView.h */,
 				F0AF7D3721CB95E90074E8F7 /* CommentInputView.m */,
+				F0AF7D9C21D357A80074E8F7 /* ReportView.h */,
+				F0AF7D9D21D357A80074E8F7 /* ReportView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -483,6 +491,8 @@
 				F0F0AAFA21AFD0F300FF84CD /* RightDetailViewController.m */,
 				F05C9F7121BAAEDB00917EC5 /* ComicDetailViewController.h */,
 				F05C9F7221BAAEDB00917EC5 /* ComicDetailViewController.m */,
+				F0AF7D9921D3533F0074E8F7 /* ReportViewController.h */,
+				F0AF7D9A21D3533F0074E8F7 /* ReportViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1044,6 +1054,7 @@
 				F0F0AAEC21AE946700FF84CD /* ScrollButton.m in Sources */,
 				F05C9F4621B7E5DF00917EC5 /* ReturnDataModel.m in Sources */,
 				F05C9FAB21BE4EE000917EC5 /* CollectionViewController.m in Sources */,
+				F0AF7D9E21D357A80074E8F7 /* ReportView.m in Sources */,
 				F05C9F6221BA668A00917EC5 /* CommentModel.m in Sources */,
 				F05C9F6F21BA9BAF00917EC5 /* CommentListTableViewCell.m in Sources */,
 				F05C9F3321B6A08300917EC5 /* UserPolicyViewController.m in Sources */,
@@ -1058,6 +1069,7 @@
 				F0AF7D7C21CCED740074E8F7 /* SearchViewController.m in Sources */,
 				F00054D321B15CA900C32111 /* LoginViewController.m in Sources */,
 				F0B3E5AF21BE612F001A104B /* AttentionViewController.m in Sources */,
+				F0AF7D9B21D3533F0074E8F7 /* ReportViewController.m in Sources */,
 				F05C9F5621B9108D00917EC5 /* ChapterModel.m in Sources */,
 				F0AF7D8921CCFDD80074E8F7 /* SearchSectionHeaderView.m in Sources */,
 				F0B3E5C821C0EDED001A104B /* RightCollectionViewCell.m in Sources */,

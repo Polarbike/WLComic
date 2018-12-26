@@ -26,6 +26,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) UIButton *replyButton;//回复按钮
 @property(nonatomic,strong) UIButton *reportButton;//举报按钮
 
+//选择按钮点击方法
+- (void)buttonSelectedAnimation;
+//取消点赞按钮动画
+- (void)buttonCancelSelectedAnimation;
+
 @end
 
 NS_ASSUME_NONNULL_END

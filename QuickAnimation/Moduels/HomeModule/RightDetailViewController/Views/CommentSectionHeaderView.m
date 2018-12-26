@@ -40,7 +40,7 @@
         _replyButton.titleLabel.font = [UIFont fontWithName:Font_Name_PFSCRe size:10];
         [_replyButton setTitleColor:kRGB(40, 40, 40, 1) forState:(UIControlStateNormal)];
         [_replyButton setImage:[UIImage imageNamed:@"praise"] forState:(UIControlStateNormal)];
-        [_backView addSubview:_replyButton];
+//        [_backView addSubview:_replyButton];
         //举报按钮
         _reportButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
         _reportButton.titleLabel.font = [UIFont fontWithName:Font_Name_PFSCRe size:10];
@@ -87,18 +87,18 @@
     //
     [self.reportButton mas_makeConstraints:^(MASConstraintMaker *make) {
         //
-        make.right.mas_equalTo(self.mas_right).and.offset(-53);
-        make.bottom.mas_equalTo(self.backView.mas_bottom).and.offset(-4);
-        make.width.mas_equalTo(35);
-        make.height.mas_equalTo(20);
-    }];
-    [self.replyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        //
         make.right.mas_equalTo(self.mas_right).and.offset(-8);
         make.bottom.mas_equalTo(self.backView.mas_bottom).and.offset(-4);
         make.width.mas_equalTo(35);
         make.height.mas_equalTo(20);
     }];
+//    [self.replyButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        //
+//        make.right.mas_equalTo(self.mas_right).and.offset(-8);
+//        make.bottom.mas_equalTo(self.backView.mas_bottom).and.offset(-4);
+//        make.width.mas_equalTo(35);
+//        make.height.mas_equalTo(20);
+//    }];
     self.backgroundColor = kRGB(247, 247, 247, 1);
 }
 
@@ -112,7 +112,40 @@
     _commentLabel.text = commentModel.content_filter;
 }
 
-
+//点赞按钮点击方法
+- (void)buttonSelectedAnimation {
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        //
+        self.replyButton.transform = CGAffineTransformMakeScale(1.6, 1.6);
+    } completion:^(BOOL finished) {
+        //
+        [UIView animateWithDuration:0.3 animations:^{
+            //在放大后改变图片
+            [self.replyButton setImage:[UIImage imageNamed:@"praise_sele"] forState:(UIControlStateNormal)];
+            //
+            self.replyButton.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        } completion:nil];
+    }];
+    
+}
+//取消点赞按钮动画
+- (void)buttonCancelSelectedAnimation {
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        //
+        self.replyButton.transform = CGAffineTransformMakeScale(1.6, 1.6);
+    } completion:^(BOOL finished) {
+        //
+        [UIView animateWithDuration:0.3 animations:^{
+            //在缩放后改变图片
+            [self.replyButton setImage:[UIImage imageNamed:@"praise"] forState:(UIControlStateNormal)];
+            //
+            self.replyButton.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        } completion:nil];
+    }];
+    
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
