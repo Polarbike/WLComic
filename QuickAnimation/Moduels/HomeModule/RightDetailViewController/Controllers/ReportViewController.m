@@ -21,9 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     [self createSubviews];
-    
 }
 
 
@@ -41,16 +39,18 @@
 - (void)backButtonClickAction {
     
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 - (void)submitButtonClickAction {
     
+    if ([self.reportView.inputView isFirstResponder]) {
+        
+        [self.reportView.inputView resignFirstResponder];
+    }
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         [hud hideAnimated:YES];
-        
         [self showMBProgressHUDWithMessage:@"提交成功" showLabel:YES isShowTime:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             

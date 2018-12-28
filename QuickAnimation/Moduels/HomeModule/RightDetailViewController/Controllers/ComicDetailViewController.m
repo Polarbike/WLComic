@@ -20,10 +20,8 @@ static NSString *chapter_identifier = @"chapterDetailCell";
 @property(nonatomic,strong) UITableView *tableView;//tableView
 @property(nonatomic,assign) BOOL isVisible;//是否是显示状态
 @property(nonatomic,strong) UIButton *backButton;//返回按钮
-
 //@property(nonatomic,strong) AFHTTPRequestOperation *chapterDataOperation;//根据章节ID请求章节详细信息
 @property(nonatomic,strong) NSMutableArray *imageModelArray;//图片数组
-
 //返回按钮
 
 @end
@@ -40,9 +38,10 @@ static NSString *chapter_identifier = @"chapterDetailCell";
     [self createSubviews];
     //设置invisible默认是显示状态
     self.isVisible = YES;
+    
 }
 
-
+//创建子视图
 - (void)createSubviews {
     
     _tableView = [[UITableView alloc] initWithFrame:(CGRectMake(0, 0, kSCREEN_Width, kSCREEN_Height)) style:(UITableViewStylePlain)];
@@ -51,11 +50,10 @@ static NSString *chapter_identifier = @"chapterDetailCell";
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.tableFooterView = [UIView new];
     [self.view addSubview:_tableView];
-    //
+    //注册nib 为tableview
     UINib *nib = [UINib nibWithNibName:@"ChapterDetailTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:chapter_identifier];
     //_tableView.backgroundColor = [UIColor grayColor];
-    
     self.backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     self.backButton.frame = CGRectMake(20, 32, 40, 40);
     [self.backButton setImage:[UIImage imageNamed:@"ic_nav_back_normal_11x19_"] forState:(UIControlStateNormal)];
@@ -67,7 +65,6 @@ static NSString *chapter_identifier = @"chapterDetailCell";
 //    UIImage *backImage = [UIImage imageNamed:@"ic_nav_back_normal_11x19_"];
 //    backImage = [backImage imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
 //    UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithImage:backImage style:(UIBarButtonItemStyleDone) target:self action:@selector(backButtonClickAction)];
-//    self.navigationItem.leftBarButtonItem = leftBarItem;
     
 }
 #pragma mark -- 请求章节信息
@@ -75,7 +72,7 @@ static NSString *chapter_identifier = @"chapterDetailCell";
     
     [self showMBProgressHUDWithMessage:@"正在加载" showLabel:NO isShowTime:NO];
     [self.parameter setObject:self.chapter_id forKey:@"chapter_id"];
-//    self.chapterDataOperation = [NCNetwork getComicChapterDetailDataWithDelegate:self parameters:self.parameter];
+    //self.chapterDataOperation = [NCNetwork getComicChapterDetailDataWithDelegate:self parameters:self.parameter];
     [MHNetworking getComicChapterDetailDataWithParameters:self.parameter success:^(id  _Nonnull result) {
         //
         NSDictionary *dic = (NSDictionary *)result;
@@ -116,18 +113,18 @@ static NSString *chapter_identifier = @"chapterDetailCell";
         //
         self.backButton.frame = CGRectMake(-40, 32, 40, 40);
     } completion:^(BOOL finished) {
-        //
+        //come list view team color
         
     }];
-    
 }
+
 - (void)visibleBackButtonWithAnimation {
     
     [UIView animateWithDuration:0.25 animations:^{
         //
         self.backButton.frame = CGRectMake(20, 32, 40, 40);
     } completion:^(BOOL finished) {
-        //
+        //your internal modirctry is the moment when you lost the faith of being excellent
     }];
     
 }
@@ -163,7 +160,6 @@ static NSString *chapter_identifier = @"chapterDetailCell";
 //        //在这里输出下error
 //
 //    }];
-
 //    [cell.comicImage sd_setImageWithURL:[NSURL URLWithString:model.img05] placeholderImage:[UIImage imageNamed:@"nurto.jpg"]];
     return cell;
     

@@ -41,22 +41,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QuickAnimation/Moduels/MineModule/ViewConrollers/CollectionViewController.m"
-            timestampString = "566292987.500779"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "QuickAnimation/Moduels/DiscoverModule/DiscoverViewController.m"
             timestampString = "567404337.532707"
             startingColumnNumber = "9223372036854775807"
@@ -74,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuickAnimation/Moduels/HomeModule/RightDetailViewController/Controllers/RightDetailViewController.m"
-            timestampString = "567502665.883907"
+            timestampString = "567594938.644058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "531"
@@ -90,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuickAnimation/Moduels/HomeModule/RightDetailViewController/Controllers/RightDetailViewController.m"
-            timestampString = "567502665.8839951"
+            timestampString = "567594938.6441669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "537"
