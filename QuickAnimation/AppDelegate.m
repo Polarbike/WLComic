@@ -60,6 +60,10 @@
 //    discover_NVC.tabBarItem.image = [UIImage imageNamed:@"ic_tabbar_discover_normal_30x30_"];
 //    discover_NVC.tabBarItem.selectedImage = discu_sele;
     //搜索页面
+    //strategy，execution，communication
+    //strategy      战略
+    //execution     执行力
+    //communication 交流
     SearchViewController *searchVC = [[SearchViewController alloc] init];
     UINavigationController *search_NVC = [[UINavigationController alloc] initWithRootViewController:searchVC];
     search_NVC.title = @"搜索";
